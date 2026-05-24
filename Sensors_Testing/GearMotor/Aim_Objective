@@ -1,0 +1,31 @@
+================================
+     Driver Forward
+================================
+Battery-powered system with a slide switch.
+
+PWM (Pulse Width Modulation) Speed Control using analogWrite().
+
+
+================================
+SYSTEM BEHAVIOUR
+================================
+Motor rotates forward for 3 seconds
+Stops for 2 seconds
+Repeats continuously
+
+
+====================================================
+               BILL OF MATERIALS
+====================================================
+       COMPONENT       |          QUANTITY
+====================================================
+Arduino Uno                         1
+====================================================
+Hobby Gearmotor                     2
+====================================================
+9V Battery                          1   
+====================================================
+Sliderswitch                        1
+====================================================
+H-bridge Motor Driver (L293D)       1
+====================================================
