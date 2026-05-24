@@ -1,0 +1,15 @@
+This file contains the datasheets for the various components used in the project, including:
+
+-> Arduino Uno
+
+-> DC Gear Motor
+
+-> IR Sensor
+
+-> Motor Driver
+
+-> Ultrasonic Sensor
+
+These datasheets provide technical specifications, pin configurations, operating voltages,
+
+and other important information required for proper system design and integration.
