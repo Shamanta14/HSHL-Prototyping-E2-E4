@@ -1,0 +1,43 @@
+==========================
+    Track Detection
+==========================
+Battery powered system with Slide switch
+
+Switch mechanism that turns the system ON and OFF implimented with the IR Sensors.
+
+Detect the position of the track
+
+Display sensor detection results (Arduino Serial Monitor)
+
+
+==========================
+IR Sensor Reading
+==========================
+LOW (0) when detecting black track
+
+HIGH (1) when detecting white surface
+
+
+==========================
+Typical arrangement
+==========================
+Left sensor sees white
+
+Right sensor sees black
+
+Robot corrects direction
+
+
+====================================================
+               BILL OF MATERIALS
+====================================================
+       COMPONENT       |          QUANTITY
+====================================================
+Arduino Uno                         1
+====================================================
+IR Sensor                           2
+====================================================
+9V Battery                          1   
+====================================================
+Sliderswitch                        1
+====================================================
