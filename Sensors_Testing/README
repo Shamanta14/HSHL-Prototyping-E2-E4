@@ -1,0 +1,13 @@
+Testing the following components individually:
+
+-> Two IR sensors
+
+-> Two gear motors
+
+-> Two ultrasonic sensors
+
+The system is powered using a 9V battery with a slide switch for power control.
+
+The system powers on when the switch is closed.
+
+The purpose of this testing is to identify and eliminate bugs or issues related to each individual sensor and component before integrating the complete system.
