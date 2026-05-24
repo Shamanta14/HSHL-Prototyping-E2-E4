@@ -1,0 +1,31 @@
+================================
+     Obstacle Detection
+================================
+Battery-powered system with a slide switch.
+
+The system detects the presence of an obstacle within a specified threshold distance.
+
+Sensor distance values are displayed on the Arduino Serial Monitor.
+
+
+================================
+Detection Threshold
+================================
+Any object detected at or below the specified threshold distance will be considered as "Detected".
+
+Else "Not Detected".
+
+
+====================================================
+               BILL OF MATERIALS
+====================================================
+       COMPONENT       |          QUANTITY
+====================================================
+Arduino Uno                         1
+====================================================
+Ultra Sonic Sensor (4-pin)          2
+====================================================
+9V Battery                          1   
+====================================================
+Sliderswitch                        1
+====================================================
