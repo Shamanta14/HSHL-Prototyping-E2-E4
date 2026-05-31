@@ -4,29 +4,31 @@
 =======================================================
 Motor Driver Pins           |          Arduino Uno Pins
 =======================================================
-Power 1                                     5V
+Power 1(5V)                                     5V
 
-Power 2                                From Switch
+Power 2(12v)                               From Switch
 -------------------------------------------------------
-                  First Motor
+                  Left Gear Motor
 -------------------------------------------------------
-Anable 1 & 2                                A1
+Enable 1 & 2                                6
 
 Input 1                                     3
 
 Input 2                                     2
 
-Output 1                                 To Motor 
+Output 1                                 To Positive terminal of the Gear Motor 
+Output 2                                 To Negative terminal of the Gear Motor 
 -------------------------------------------------------
-                  Second Motor
+                  Right Gear Motor
 -------------------------------------------------------
-Anable 3 & 4                                A3
+Enable 3 & 4                                9
 
 Input 3                                     12
 
 Input 4                                     13
 
-Output 3                                 To Motor
+Output 3                                 To Positive terminal of the Gear Motor 
+Output 4                                 To Negative terminal of the Gear Motor 
 =======================================================
 
 
