@@ -3,10 +3,17 @@ Design and construction of an autonomous vehicle that can follow a line , detect
 
 ## Aim and objective 
 The goal of this project is to design and prototype an autonomous robot capable of:
-- Following a predefined track using IR sensors.
-- Detecting and avoiding obstacles using ultrasonic sensors.
--  Motor driver controls direction and speed using PWM.
+- Following a predefined track using line detection sensor.
+- Detecting and avoiding obstacles in real time .
 - Operating on a battery‑powered system with PWM speed control.
+
+  ## System overview
+  The autonomous robot integrates multiple subsystems:
+- **IR sensors** detect line and provide feedback for track following control.
+- **Ultrasonic sensors** measure distance to obstacles and trigger avoidance maneuvers when necessary.
+- **The motor driver** controls direction and speed using PWM signals.
+- Power is supplied by a 9V battery through a slide switch.
+
 
 ## Bill of material 
 
@@ -19,7 +26,6 @@ The goal of this project is to design and prototype an autonomous robot capable 
 | 9V Battery                  | 1        |
 | Slide Switch                | 1        |
 
-## Repositors structure 
 
 ### Repository Structure
 
@@ -31,6 +37,15 @@ The goal of this project is to design and prototype an autonomous robot capable 
 | Sensors_Testing          | Test results and calibration data for sensor performance. |
 | System&UML_diagrams      | UML diagrams and system architecture documentation. |
 | README.md                | Project overview and documentation. |
+
+
+## Contrinutors 
+Project by Team E2-E4
+-
+-
+-
+-
+Hochschule Hamm Lippstadt 
 
 
 
