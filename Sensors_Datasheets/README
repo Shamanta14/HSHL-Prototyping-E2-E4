@@ -1,30 +1,23 @@
-## components Datasheets 
+# Components Datasheets
 
-This folder contains the datasheets for all major electronic components used in the autonomous robot project.Each datasheet provides essential technical information such as:
+This folder contains the datasheets for all major electronic components used in the autonomous robot project.  
+Each datasheet provides essential technical information such as:
 
--Electrical characteristics
-
--Pin configurations
-
--Operating voltages
-
--Timing diagrams
-
--Mechanical dimensions
-
--Usage guidelines
+- Electrical characteristics  
+- Pin configurations  
+- Operating voltages  
+- Timing diagrams  
+- Mechanical dimensions  
+- Usage guidelines  
 
 These documents are critical for correct system design, wiring, and integration of the robot’s hardware components.
 
-
 ## Repository Structure
 
-| File/Folder Name                          | Description                                         |
-|-------------------------------------------|-----------------------------------------------------|
-| Arduino_Uno_Datasheet.PDF                 | Datasheet for Arduino Uno microcontroller board     |
-| IR_Sensor-Datasheet.pdf                   | Datasheet for IR sensor used in line detection      |
-| L298N Motor Driver Datasheet.pdf          | Datasheet for L298N motor driver IC                 |
-| Ultra_Sonic_Sensor(4-pins)_Datasheet.pdf  | Datasheet for HC‑SR04 ultrasonic distance sensor    |
-| README                                    | Documentation describing component datasheets usage |
-
-
+| File/Folder Name                         | Description                                         |
+|------------------------------------------|-----------------------------------------------------|
+| Arduino_Uno_Datasheet.PDF                | Datasheet for Arduino Uno microcontroller board     |
+| IR_Sensor-Datasheet.pdf                  | Datasheet for IR sensor used in line detection      |
+| L298N Motor Driver Datasheet.pdf         | Datasheet for L298N motor driver IC                 |
+| Ultra_Sonic_Sensor(4-pins)_Datasheet.pdf | Datasheet for HC‑SR04 ultrasonic distance sensor    |
+| README                                   | Documentation describing component datasheets usage |
