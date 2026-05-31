@@ -22,14 +22,14 @@
 // ==========================
 // MOTOR A CONNECTIONS
 // ==========================
-// EN1,2 (L293D Pin 1) -> Arduino Pin A1 (PWM)
+// EN1,2 (L293D Pin 1) -> Arduino Pin 6 (PWM)
 // IN1 (L293D Pin 2)   -> Arduino Pin 3
 // IN2 (L293D Pin 7)   -> Arduino Pin 2
 
 // ==========================
 // MOTOR B CONNECTIONS
 // ==========================
-// EN3,4 (L293D Pin 9) -> Arduino Pin A3 (PWM)
+// EN3,4 (L293D Pin 9) -> Arduino Pin 9 (PWM)
 // IN3 (L293D Pin 10)  -> Arduino Pin 12
 // IN4 (L293D Pin 15)  -> Arduino Pin 13
 
