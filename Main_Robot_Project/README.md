@@ -41,3 +41,19 @@
 | 9V Battery                   | 1        |
 | Slide Switch                 | 1        |
 
+
+ ## Repository Structure
+
+| Folder/File             | Description                                                  |
+|--------------------------|--------------------------------------------------------------|
+| Assembled Parts          | Mechanical assembly files for robot chassis                 |
+| Motor Driver             | Code for PWM motor control                                  |
+| Sensors Code Function    | Functions for IR,ultrasonic sensors and motor.                     |
+| Tinkercad_circuitwiring  | Circuit wiring diagrams                                     |
+| Code.cc                  | Main Arduino logic implementation                           |
+| Pin_Connections.h        | Pin mapping for sensors and motors                          |
+| README.md                | Project documentation                                       |
+
+
+
+
