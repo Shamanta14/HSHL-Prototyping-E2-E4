@@ -29,22 +29,15 @@
 -> If an obstacle is detected ahead within the threshold distance, the robot stops moving.
 
 
-====================================================
-               BILL OF MATERIALS
-====================================================
-       COMPONENT       |          QUANTITY
-====================================================
-Arduino Uno                         1
-====================================================
-Hobby Gearmotor                     2
-====================================================
-IR Sensor                           2
-====================================================
-Ultra Sonic Sensor (4-pin)          2
-====================================================
-9V Battery                          1   
-====================================================
-Sliderswitch                        1
-====================================================
-H-bridge Motor Driver (L293D)       1
-====================================================
+## Bill of material
+
+
+| ##Component                  | ##Quantity |
+|------------------------------|----------|
+| Arduino Uno                  | 1        |
+| Hobby Gearmotor              | 2        |
+| IR Sensor                    | 2        |
+| Ultrasonic Sensor (4‑pin)    | 2        |
+| 9V Battery                   | 1        |
+| Slide Switch                 | 1        |
+
