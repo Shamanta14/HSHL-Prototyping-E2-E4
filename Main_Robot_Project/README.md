@@ -1,32 +1,25 @@
-================================================================
----------------------Track_Following_Robot----------------------
-================================================================
+## Track following robot.
 -> Battery-powered system with a slide switch.
 
 -> PWM (Pulse Width Modulation) Speed Control using analogWrite() for the Gearmotor speed.
 
 -> Two Ultra Sonic Sensor detects the presence of an obstacle within a specified threshold distance.
-   
-   ==========================
-   Detection Threshold
-   ==========================
+
+## Detection threshold 
    Any object detected at or below the specified threshold distance will be considered as "Detected".
 
    Else "Not Detected".
 
 ->The Two IR sensor detect the presence of the track.
 
-   ==========================
-   IR Sensor Reading
-   ==========================
+## IR sensor reading 
+
    LOW (0) when detecting black track
 
    HIGH (1) when detecting white surface
 
+## System Behaviour 
 
-================================================================
-------------------------SYSTEM BEHAVIOUR------------------------
-================================================================
 -> The robot moves forward only when it is on the track and there is no obstacle ahead.
 
 -> If the robot moves away from the track, it automatically self-corrects its position
