@@ -1,0 +1,111 @@
+// ================================
+// Ultrasonic Sensor Obstacle Avoidance
+// ================================
+
+// Sensor 1
+const int trig1 = 11;
+const int echo1 = 10;
+
+// Sensor 2
+const int trig2 = 5;
+const int echo2 = 4;
+
+// Detection threshold (cm)
+const int threshold = 20;
+
+// ================================
+// Setup
+// ================================
+void setup() {
+  Serial.begin(9600);
+
+  pinMode(trig1, OUTPUT);
+  pinMode(echo1, INPUT);
+
+  pinMode(trig2, OUTPUT);
+  pinMode(echo2, INPUT);
+
+  // Motor pins would go here (if connected)
+}
+
+// ================================
+// FUNCTION: readDistance()
+// ================================
+int readDistance(int trigPin, int echoPin) {
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+
+  long duration = pulseIn(echoPin, HIGH);
+  int distance = duration * 0.034 / 2;
+
+  return distance;
+}
+
+// ================================
+// FUNCTION: detectObstacle()
+// ================================
+// Returns:
+//  0 = no obstacle
+//  1 = obstacle on left sensor
+//  2 = obstacle on right sensor
+//  3 = obstacle on both sensors
+int detectObstacle() {
+  int d1 = readDistance(trig1, echo1);
+  int d2 = readDistance(trig2, echo2);
+
+  Serial.print("Left Sensor: ");
+  Serial.print(d1);
+  Serial.println(" cm");
+
+  Serial.print("Right Sensor: ");
+  Serial.print(d2);
+  Serial.println(" cm");
+
+  Serial.println("------------------------");
+
+  bool leftHit = (d1 <= threshold);
+  bool rightHit = (d2 <= threshold);
+
+  if (leftHit && rightHit) return 3;
+  if (leftHit) return 1;
+  if (rightHit) return 2;
+  return 0;
+}
+
+// ================================
+// FUNCTION: maneuver()
+// ================================
+// Replace Serial prints with motor control later
+void maneuver(int obstacleCode) {
+  switch (obstacleCode) {
+
+    case 0:
+      Serial.println("Path Clear → Move Forward");
+      break;
+
+    case 1:
+      Serial.println("Obstacle Left → Turn Right");
+      break;
+
+    case 2:
+      Serial.println("Obstacle Right → Turn Left");
+      break;
+
+    case 3:
+      Serial.println("Obstacle Ahead → Stop + Reverse");
+      break;
+  }
+}
+
+// ================================
+// MAIN LOOP
+// ================================
+void loop() {
+  int obstacleCode = detectObstacle();
+  maneuver(obstacleCode);
+  delay(300);
+}
