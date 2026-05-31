@@ -23,14 +23,12 @@ Right sensor sees black
 Robot corrects direction
 
 
-                ## BILL OF MATERIALS
-        ## COMPONENT       |          ## QUANTITY
+## BILL OF MATERIALS
 
-Arduino Uno                         1
+- Arduino Uno -> 1
 
-IR Sensor                           2
+- IR Sensor -> 2
 
-9V Battery                          1   
+- 9V Battery -> 1   
 
-Sliderswitch                        1
-
+- Sliderswitch -> 1
