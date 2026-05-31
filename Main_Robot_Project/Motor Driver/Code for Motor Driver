@@ -36,14 +36,14 @@
 // --------------------------
 // Motor A Pins
 // --------------------------
-int ENA = A1;  // PWM speed control
+int ENA = 6;  // PWM speed control
 int IN1 = 3;   // Direction control
 int IN2 = 2;   // Direction control
 
 // --------------------------
 // Motor B Pins
 // --------------------------
-int ENB = A3;  // PWM speed control
+int ENB = 9;  // PWM speed control
 int IN3 = 12;  // Direction control
 int IN4 = 13;  // Direction control
 
