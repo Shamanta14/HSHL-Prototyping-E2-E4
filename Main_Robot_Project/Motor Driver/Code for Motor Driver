@@ -1,0 +1,102 @@
+// ==========================
+// Drive Two MOTORs Simultaneously 
+// ==========================
+
+// Arduino UNO + L293D Motor Driver + TWO DC Motors
+// Battery powered system with Slide switch
+// PWM (Pulse Width Modulation) Speed Control using analogWrite()
+
+// ==========================
+// SYSTEM BEHAVIOUR
+// ==========================
+// Motor rotates forward for 3 seconds
+// Stops for 2 seconds
+// Repeats continuously
+
+// ==========================
+// POWER CONNECTION
+// ==========================
+// Power1 (L293D Pin16) -> Logic power (5V from Arduino)
+// Power2 (L293D Pin8)  -> Motor power (battery)
+
+// ==========================
+// MOTOR A CONNECTIONS
+// ==========================
+// EN1,2 (L293D Pin 1) -> Arduino Pin A1 (PWM)
+// IN1 (L293D Pin 2)   -> Arduino Pin 3
+// IN2 (L293D Pin 7)   -> Arduino Pin 2
+
+// ==========================
+// MOTOR B CONNECTIONS
+// ==========================
+// EN3,4 (L293D Pin 9) -> Arduino Pin A3 (PWM)
+// IN3 (L293D Pin 10)  -> Arduino Pin 12
+// IN4 (L293D Pin 15)  -> Arduino Pin 13
+
+// --------------------------
+// Motor A Pins
+// --------------------------
+int ENA = A1;  // PWM speed control
+int IN1 = 3;   // Direction control
+int IN2 = 2;   // Direction control
+
+// --------------------------
+// Motor B Pins
+// --------------------------
+int ENB = A3;  // PWM speed control
+int IN3 = 12;  // Direction control
+int IN4 = 13;  // Direction control
+
+void setup() {
+
+  // Motor A
+  pinMode(ENA, OUTPUT);
+  pinMode(IN1, OUTPUT);
+  pinMode(IN2, OUTPUT);
+
+  // Motor B
+  pinMode(ENB, OUTPUT);
+  pinMode(IN3, OUTPUT);
+  pinMode(IN4, OUTPUT);
+
+}
+
+void loop() {
+  // ==========================
+  // BOTH MOTORS FORWARD
+  // ==========================
+
+  // Motor A Direction
+  digitalWrite(IN1, HIGH);
+  digitalWrite(IN2, LOW);
+
+  // Motor B Direction
+  digitalWrite(IN3, HIGH);
+  digitalWrite(IN4, LOW);
+
+  // Speed Control (Range: 0 - 255)
+  analogWrite(ENA, 180);
+  analogWrite(ENB, 180);
+
+  delay(3000);
+
+  // ==========================
+  // STOP BOTH MOTORS
+  // ==========================
+  analogWrite(ENA, 0);
+  analogWrite(ENB, 0);
+
+  delay(2000);
+
+}
+
+// ==========================
+// If the motor A spins in the wrong direction
+// ==========================
+   // Swap
+// digitalWrite(IN1, HIGH);
+// digitalWrite(IN2, LOW);
+
+   // To
+// digitalWrite(IN1, LOW);
+// digitalWrite(IN2, HIGH);
