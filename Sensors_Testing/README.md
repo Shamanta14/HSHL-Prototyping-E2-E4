@@ -1,4 +1,4 @@
-Testing the following components individually:
+## Testing the following components individually:
 
 -> Two IR sensors
 
