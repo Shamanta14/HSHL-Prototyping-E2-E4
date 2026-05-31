@@ -1,5 +1,5 @@
 # HSHL-Prototyping-E2-E4
-Design and construction of an autonomous vehicle that can follow a line , detect and avoid obstacles
+Design and construction of an autonomous vehicle.
 
 ## Aim and objective 
 The goal of this project is to design and prototype an autonomous robot capable of:
