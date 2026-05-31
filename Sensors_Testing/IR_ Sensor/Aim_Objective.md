@@ -1,5 +1,5 @@
 ==========================
-    Track Detection
+    ## Track Detection
 ==========================
 Battery-powered system with a slide switch.
 
@@ -9,7 +9,7 @@ Sensor detection results are displayed on the Arduino Serial Monitor.
 
 
 ==========================
-IR Sensor Reading
+ ## IR Sensor Reading
 ==========================
 LOW (0) when detecting black track
 
@@ -17,7 +17,7 @@ HIGH (1) when detecting white surface
 
 
 ==========================
-Typical arrangement
+ ## Typical arrangement
 ==========================
 Left sensor sees white
 
@@ -27,9 +27,9 @@ Robot corrects direction
 
 
 ====================================================
-               BILL OF MATERIALS
+                ## BILL OF MATERIALS
 ====================================================
-       COMPONENT       |          QUANTITY
+        ## COMPONENT       |          ## QUANTITY
 ====================================================
 Arduino Uno                         1
 ====================================================
