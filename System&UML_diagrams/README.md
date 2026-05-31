@@ -30,4 +30,4 @@ These diagrams help visualize how different subsystems (hardware and software) c
 | SMD_diagram.drawio.png                 | System modeling diagram for hardware/software mapping |
 | Sequence Diagram.png                   | Sequence diagram illustrating event interactions |
 | Use case diagram(Xintong Fen...).png   | Use‑case diagram showing user interactions       |
-| file_1                                 | Placeholder or temporary file                    |
+          
