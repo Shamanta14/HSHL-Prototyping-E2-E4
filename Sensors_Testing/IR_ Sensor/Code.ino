@@ -24,8 +24,8 @@
 // LOW when detecting black track
 // HIGH when detecting white surface
 
-int leftSensor = 9;
-int rightSensor = 6;
+int leftSensor = 8;
+int rightSensor = 7;
 
 void setup() {
   // Set sensor pins as input
