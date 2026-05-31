@@ -1,15 +1,30 @@
-This file contains the datasheets for the various components used in the project, including:
+## components Datasheets 
 
--> Arduino Uno
+This folder contains the datasheets for all major electronic components used in the autonomous robot project.Each datasheet provides essential technical information such as:
 
--> DC Gear Motor
+-Electrical characteristics
 
--> IR Sensor
+-Pin configurations
 
--> Motor Driver
+-Operating voltages
 
--> Ultrasonic Sensor
+-Timing diagrams
 
-These datasheets provide technical specifications, pin configurations, operating voltages,
+-Mechanical dimensions
 
-and other important information required for proper system design and integration.
+-Usage guidelines
+
+These documents are critical for correct system design, wiring, and integration of the robot’s hardware components.
+
+
+## Repository Structure
+
+| File/Folder Name                          | Description                                         |
+|-------------------------------------------|-----------------------------------------------------|
+| Arduino_Uno_Datasheet.PDF                 | Datasheet for Arduino Uno microcontroller board     |
+| IR_Sensor-Datasheet.pdf                   | Datasheet for IR sensor used in line detection      |
+| L298N Motor Driver Datasheet.pdf          | Datasheet for L298N motor driver IC                 |
+| Ultra_Sonic_Sensor(4-pins)_Datasheet.pdf  | Datasheet for HC‑SR04 ultrasonic distance sensor    |
+| README                                    | Documentation describing component datasheets usage |
+
+
