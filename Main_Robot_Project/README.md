@@ -32,7 +32,7 @@
 ## Bill of material
 
 
-| ##Component                  | ##Quantity |
+| Component                    |Quantity |
 |------------------------------|----------|
 | Arduino Uno                  | 1        |
 | Hobby Gearmotor              | 2        |
