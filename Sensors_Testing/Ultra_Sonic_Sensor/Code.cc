@@ -12,7 +12,7 @@ const int trig1 = 11;
 const int echo1 = 10;
 
 // Ultra Sonic Sensor 2
-const int trig2 = 5;
+const int trig2 = 9;
 const int echo2 = 4;
 
 // ================================
