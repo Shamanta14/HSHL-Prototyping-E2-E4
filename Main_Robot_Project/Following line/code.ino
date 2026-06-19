@@ -5,8 +5,8 @@ const int rightSensor = 7;
 // L298N PINS
 // =========================
 const int ENA = 6;
-const int IN1 = 2;
-const int IN2 = 3;
+const int IN1 = 3;
+const int IN2 = 2;
 const int ENB = 5;
 const int IN3 = 12;
 const int IN4 = 13;
@@ -14,8 +14,8 @@ const int IN4 = 13;
 // =========================
 // SPEED SETTINGS
 // =========================
-const int forwardSpeed = 200;
-const int turnSpeed = 180;
+const int forwardSpeed = 180;
+const int turnSpeed = 165;
 const int slowSpeed = 20;
 const int searchSpeed = 90;
 
@@ -45,8 +45,8 @@ void setup() {
 // MOTOR FUNCTIONS
 // =========================
 void moveForward() {
-  digitalWrite(IN1, HIGH);
-  digitalWrite(IN2, LOW);
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, HIGH);
   digitalWrite(IN3, HIGH);
   digitalWrite(IN4, LOW);
   analogWrite(ENA, forwardSpeed);
@@ -56,8 +56,8 @@ void moveForward() {
 void turnLeft() {
   // Left wheel slower
   // Right wheel faster
-  digitalWrite(IN1, HIGH);
-  digitalWrite(IN2, LOW);
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, HIGH);
   digitalWrite(IN3, HIGH);
   digitalWrite(IN4, LOW);
   analogWrite(ENB, slowSpeed);
@@ -67,8 +67,8 @@ void turnLeft() {
 void turnRight() {
   // Left wheel faster
   // Right wheel slower
-  digitalWrite(IN1, HIGH);
-  digitalWrite(IN2, LOW);
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, HIGH);
   digitalWrite(IN3, HIGH);
   digitalWrite(IN4, LOW);
   analogWrite(ENB, turnSpeed);
@@ -76,8 +76,8 @@ void turnRight() {
 }
 
 void searchLeft() {
-  digitalWrite(IN1, LOW);
-  digitalWrite(IN2, HIGH);
+  digitalWrite(IN1, HIGH);
+  digitalWrite(IN2, LOW);
   digitalWrite(IN3, HIGH);
   digitalWrite(IN4, LOW);
   analogWrite(ENA, searchSpeed);
@@ -85,8 +85,8 @@ void searchLeft() {
 }
 
 void searchRight() {
-  digitalWrite(IN1, HIGH);
-  digitalWrite(IN2, LOW);
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, HIGH);
   digitalWrite(IN3, LOW);
   digitalWrite(IN4, HIGH);
   analogWrite(ENA, searchSpeed);
