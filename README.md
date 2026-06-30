@@ -39,7 +39,7 @@ The goal of this project is to design and prototype an autonomous robot capable 
 | README.md                | Project overview and documentation. |
 
 
-## Contrinutors 
+## Contributors 
 Project by Team E2-E4
 -
 -
