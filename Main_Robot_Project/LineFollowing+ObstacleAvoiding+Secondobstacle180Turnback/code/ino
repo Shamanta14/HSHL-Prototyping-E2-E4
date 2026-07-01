@@ -1,1 +1,244 @@
+// ============================================================
+//  LINE-FOLLOWING ROBOT  —  PID + TWO-STAGE OBSTACLE HANDLING
+//  1st Obstacle: Left-side bypass
+//  2nd Obstacle: 180-degree U-Turn
+// ============================================================
 
+const int LEFT_SENSOR  = 8;
+const int RIGHT_SENSOR = 7;
+
+// L298N PINS
+const int ENA = 6;   // Left motor PWM
+const int IN1 = 2;
+const int IN2 = 3;
+const int ENB = 5;   // Right motor PWM
+const int IN3 = 12;
+const int IN4 = 13;
+
+// Ultrasonic Sensors
+const int LEFT_TRIG  = 11;
+const int LEFT_ECHO  = 10;
+const int RIGHT_TRIG = 9;
+const int RIGHT_ECHO = 4;
+
+// SPEED CONSTANTS (PWM 0-255)
+const int BASE_SPEED      = 155;
+const int MAX_SPEED       = 210;
+const int MIN_SPEED       = 50;
+
+const int FORWARD_SPEED   = 180;
+const int AVOID_TURN_SPEED = 180;
+const int AVOID_LOW_SPEED  = 40;
+const int FORWARD_OBSTACLE_SPEED = 120;
+const int UTURN_SPEED     = 160;  // Rotation speed during U-turn
+
+// OBSTACLE DETECTION
+const int SAFE_DIST_CM    = 15;
+
+// PID GAINS
+float Kp = 80.0;
+float Ki = 0.3;
+float Kd = 20.0;
+const float INTEGRAL_LIMIT = 100.0;
+
+float pidIntegral  = 0.0;
+float pidLastError = 0.0;
+int lastDirection = 0;
+
+// Obstacle counter
+int obstacleCount = 0;
+
+void setup() {
+  TCCR0B = TCCR0B & B11111000 | B00000010;
+
+  pinMode(LEFT_SENSOR,  INPUT);
+  pinMode(RIGHT_SENSOR, INPUT);
+  pinMode(ENA, OUTPUT); pinMode(IN1, OUTPUT); pinMode(IN2, OUTPUT);
+  pinMode(ENB, OUTPUT); pinMode(IN3, OUTPUT); pinMode(IN4, OUTPUT);
+  pinMode(LEFT_TRIG,  OUTPUT); pinMode(LEFT_ECHO,  INPUT);
+  pinMode(RIGHT_TRIG, OUTPUT); pinMode(RIGHT_ECHO, INPUT);
+
+  Serial.begin(9600);
+  stopMotors();
+  delay(1000);
+}
+
+void setMotors(int L, int R) {
+  if (L >= 0) { digitalWrite(IN1, HIGH); digitalWrite(IN2, LOW); }
+  else         { digitalWrite(IN1, LOW); digitalWrite(IN2, HIGH); L = -L; }
+  analogWrite(ENA, constrain(L, 0, 255));
+
+  if (R >= 0) { digitalWrite(IN3, HIGH); digitalWrite(IN4, LOW); }
+  else         { digitalWrite(IN3, LOW); digitalWrite(IN4, HIGH); R = -R; }
+  analogWrite(ENB, constrain(R, 0, 255));
+}
+
+void stopMotors() {
+  analogWrite(ENA, 0);
+  analogWrite(ENB, 0);
+}
+
+void avoidTurnLeft() { setMotors(AVOID_LOW_SPEED, AVOID_TURN_SPEED); }
+void avoidTurnRight() { setMotors(AVOID_TURN_SPEED, AVOID_LOW_SPEED); }
+
+// Clockwise in-place rotation (left wheel forward, right wheel backward)
+void spinRight(int spd) { setMotors(spd, -spd); }
+
+long getDistance(int trig, int echo) {
+  digitalWrite(trig, LOW);  delayMicroseconds(2);
+  digitalWrite(trig, HIGH); delayMicroseconds(10);
+  digitalWrite(trig, LOW);
+  long dur = pulseIn(echo, HIGH, 30000);
+  return (dur == 0) ? 999 : dur * 0.034 / 2;
+}
+
+void resetPID() {
+  pidIntegral  = 0.0;
+  pidLastError = 0.0;
+}
+
+int readSensorFiltered(int pin) {
+  int firstRead = digitalRead(pin);
+  for (int i = 0; i < 3; i++) {
+    delayMicroseconds(50);
+    if (digitalRead(pin) != firstRead) return firstRead;
+  }
+  return firstRead;
+}
+
+void pidLineFollow() {
+  int L = readSensorFiltered(LEFT_SENSOR);
+  int R = readSensorFiltered(RIGHT_SENSOR);
+
+  float error;
+  if      (L == 1 && R == 1) { error = 0.0; lastDirection = 0; }
+  else if (L == 1 && R == 0) { error = -1.0; lastDirection = 1; }
+  else if (L == 0 && R == 1) { error = +1.0; lastDirection = 2; }
+  else {
+    error = (lastDirection == 1) ? -1.5 : (lastDirection == 2) ? +1.5 : 0.0;
+    pidIntegral = 0.0;
+  }
+
+  pidIntegral += error;
+  pidIntegral  = constrain(pidIntegral, -INTEGRAL_LIMIT, INTEGRAL_LIMIT);
+  float derivative = error - pidLastError;
+  float output = Kp * error + Ki * pidIntegral + Kd * derivative;
+  pidLastError = error;
+
+  int leftSpd  = BASE_SPEED - (int)output;
+  int rightSpd = BASE_SPEED + (int)output;
+  leftSpd  = constrain(leftSpd,  -MAX_SPEED, MAX_SPEED);
+  rightSpd = constrain(rightSpd, -MAX_SPEED, MAX_SPEED);
+
+  if (leftSpd  > 0 && leftSpd  < MIN_SPEED) leftSpd  = MIN_SPEED;
+  if (rightSpd > 0 && rightSpd < MIN_SPEED) rightSpd = MIN_SPEED;
+
+  setMotors(leftSpd, rightSpd);
+}
+
+void loop() {
+  long leftDist = getDistance(LEFT_TRIG, LEFT_ECHO);
+  long rightDist = getDistance(RIGHT_TRIG, RIGHT_ECHO);
+
+  // ----------------------------------------------------
+  // Obstacle detection
+  // ----------------------------------------------------
+  if (leftDist < SAFE_DIST_CM || rightDist < SAFE_DIST_CM) {
+    obstacleCount++; // Increase obstacle counter
+    Serial.print(F("OBSTACLE DETECTED! Count = "));
+    Serial.println(obstacleCount);
+
+    stopMotors();
+    delay(200);
+
+    // ==========================================
+    // If this is the second obstacle -> perform a 180-degree U-turn
+    // ==========================================
+    if (obstacleCount >= 2) {
+      Serial.println(F("--- EXECUTING 180-DEGREE U-TURN ---"));
+
+      // 1. Reverse slightly to avoid hitting the obstacle during the turn
+      setMotors(-FORWARD_SPEED, -FORWARD_SPEED);
+      delay(400);
+      stopMotors();
+      delay(100);
+
+      // 2. Start rotating in place
+      spinRight(200);
+
+      // 3. Stage 1: Rotate long enough to ensure both sensors leave the current black line
+      delay(1000);
+
+      // Stage 2: Continue rotating until either sensor detects the line again
+      // indicating that the 180-degree turn has been completed
+      unsigned long uTurnTimeout = millis();
+      while (readSensorFiltered(LEFT_SENSOR) == 0 && readSensorFiltered(RIGHT_SENSOR) == 0) {
+        if (millis() - uTurnTimeout > 4000) { // 4-second timeout protection
+          Serial.println(F("U-Turn Timeout!"));
+          break;
+        }
+        delay(10);
+      }
+
+      Serial.println(F("--- U-TURN SUCCESS! RUNNING BACKWARDS ---"));
+
+      // Uncomment the following line if you want to reset the obstacle counter after the U-turn
+      // obstacleCount = 0;
+
+      resetPID();
+      lastDirection = 0;
+      return;
+    }
+
+    // ==========================================
+    // First obstacle -> execute the original bypass sequence
+    // ==========================================
+    else {
+      Serial.println(F("--- EXECUTING FIRST OBSTACLE BYPASS ---"));
+
+      // 2. Reverse
+      setMotors(-FORWARD_SPEED, -FORWARD_SPEED);
+      delay(3000);
+
+      // 3. Make a wide left turn to leave the line
+      avoidTurnLeft();
+      delay(3000);
+
+      setMotors(FORWARD_OBSTACLE_SPEED, FORWARD_OBSTACLE_SPEED);
+      delay(20);
+
+      // 4. Move forward across the white area to bypass the obstacle
+      if (readSensorFiltered(LEFT_SENSOR) == 0 && readSensorFiltered(RIGHT_SENSOR) == 0) {
+        setMotors(FORWARD_SPEED, FORWARD_SPEED);
+        delay(6000);
+      }
+
+      // 5. Make a wide right turn to return to the line
+      avoidTurnRight();
+
+      unsigned long timeout = millis();
+      while (readSensorFiltered(LEFT_SENSOR) == 0) {
+        if (millis() - timeout > 5000) {
+          Serial.println(F("Search Timeout!"));
+          break;
+        }
+        delay(10);
+      }
+
+      Serial.println(F("--- BYPASS SUCCESS! RESUMING PID ---"));
+
+      resetPID();
+      lastDirection = 0;
+      return;
+    }
+  }
+
+  // ----------------------------------------------------
+  // Normal line following
+  // ----------------------------------------------------
+  else {
+    pidLineFollow();
+  }
+
+  delay(8);
+}
