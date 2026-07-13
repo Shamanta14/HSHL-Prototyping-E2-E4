@@ -12,23 +12,23 @@ Power 2(12v)                               From Switch
 -------------------------------------------------------
 Enable 1 & 2                                6
 
-Input 1                                     3
+Input 1                                     2
 
-Input 2                                     2
+Input 2                                     3
 
-Output 1                                 To Positive terminal of the Gear Motor 
-Output 2                                 To Negative terminal of the Gear Motor 
+Output 1                                 To Positive terminal of the Right Gear Motor 
+Output 2                                 To Negative terminal of the Right Gear Motor 
 -------------------------------------------------------
                   Right Gear Motor
 -------------------------------------------------------
-Enable 3 & 4                                9
+Enable 3 & 4                                5
 
 Input 3                                     12
 
 Input 4                                     13
 
-Output 3                                 To Positive terminal of the Gear Motor 
-Output 4                                 To Negative terminal of the Gear Motor 
+Output 3                                 To Positive terminal of the Left Gear Motor 
+Output 4                                 To Negative terminal of the Left Gear Motor 
 =======================================================
 
 
@@ -47,7 +47,7 @@ Echo                                       10
 -------------------------------------------------------
                   Second Ultra Sonic
 -------------------------------------------------------
-Trigger                                    5
+Trigger                                    9
 
 Echo                                       4
 =======================================================
