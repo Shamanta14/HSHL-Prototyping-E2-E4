@@ -29,5 +29,5 @@ These diagrams help visualize how different subsystems (hardware and software) c
 | Requirements Diagram.png               | Diagram listing system requirements and dependencies |
 | SMD_diagram.drawio.png                 | System modeling diagram for hardware/software mapping |
 | Sequence Diagram.png                   | Sequence diagram illustrating event interactions |
-| Use case diagram(Xintong Fen...).png   | Use‑case diagram showing user interactions       |
+| Usecase Diagram.png                    | Use‑case diagram showing user interactions       |
           
