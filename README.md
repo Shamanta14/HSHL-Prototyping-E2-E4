@@ -12,7 +12,7 @@ The goal of this project is to design and prototype an autonomous robot capable 
 - **IR sensors** detect line and provide feedback for track following control.
 - **Ultrasonic sensors** measure distance to obstacles and trigger avoidance maneuvers when necessary.
 - **The motor driver** controls direction and speed using PWM signals.
-- Power is supplied by a 9V battery through a slide switch.
+- Power is supplied by a 11,1 battery through a push on/off switch.
 
 
 ## Bill of material 
