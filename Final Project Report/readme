@@ -1,1 +1,15 @@
+## Project Report
+
+The complete project report documents the design, implementation, testing, and evaluation of the autonomous vehicle.
+
+The report covers the following main topics:
+
+- Background, problem statement, project goals, and constraints
+- System design and engineering approach
+- System architecture, data flow, and UML diagrams
+- Hardware components, electrical connections, and mechanical design
+- Software architecture, PID control, and obstacle avoidance
+- Simulation, testing, verification, and performance evaluation
+- Challenges, current limitations, and future improvements
+- Team contributions, conclusion, and lessons learned
 
