@@ -39,7 +39,7 @@
 | IR Sensor                    | 2        |
 | Ultrasonic Sensor (4‑pin)    | 2        |
 | 9V Battery                   | 1        |
-| Slide Switch                 | 1        |
+| Push on/off Switch           | 1        |
 
 
  ## Repository Structure
